@@ -1,12 +1,16 @@
-import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchContacts } from "./redux/contactsOps";
 import HomePage from "./pages/HomePage";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-    </Routes>
-  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  return <HomePage />;
 }
 
 export default App;
